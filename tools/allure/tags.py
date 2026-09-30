@@ -1,0 +1,9 @@
+from enum import Enum
+
+
+class AllureTag(str, Enum):
+    USER_LOGIN = "USER_LOGIN"
+    NAVIGATION = "NAVIGATION"
+    REGISTRATION = "REGISTRATION"
+    PURCHASE = "PURCHASE_PRODUCT"
+    AUTHORIZATION = "AUTHORIZATION"
