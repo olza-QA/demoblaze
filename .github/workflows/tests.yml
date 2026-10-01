@@ -53,6 +53,7 @@ jobs:
           allure_results: allure-results
           allure_history: allure-history
           gh_pages: gh-pages
+          keep_reports: 20
 
 
 
