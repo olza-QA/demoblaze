@@ -76,7 +76,9 @@ def test_log_in_with_wrong_credentials(page:Page, username:str, password:str):
     log_in_form.fill_form(username=username, password=password)
 
     def handle_dialog(dialog):
-        assert dialog.message in ["Wrong password.","User does not exist.","Please fill out Username and Password."]
+        assert dialog.message in [
+            "Wrong password.","User does not exist.","Please fill out Username and Password."
+        ]
         print(f"Modal message: {dialog.message}")
         dialog.accept()
     page.on("dialog", handle_dialog)
