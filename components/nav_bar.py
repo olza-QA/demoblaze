@@ -15,10 +15,10 @@ class NavBar(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        log_in_form = LogInForm(page)
-        signup_form = SignUpForm(page)
-        contact_form = ContactForm(page)
-        about_us = AboutUs(page)
+        self.log_in_form = LogInForm(page)
+        self.sign_up_form = SignUpForm(page)
+        self.contact_form = ContactForm(page)
+        self.about_us = AboutUs(page)
 
         self.brand_link = Link(page,"#nava",'Brand')
         self.home_link = Link(page,'//li//a[@href="index.html"]','Home')

@@ -1,4 +1,8 @@
 from playwright.sync_api import Page
+
+from components.footer import Footer
+from components.nav_bar import NavBar
+from components.thak_you_for_purchase_alert import ThankYouForPurchaseAlert
 from pages.base_page import BasePage
 from components.place_order_form import PlaceOrderForm
 from elements.button import Button
@@ -9,7 +13,10 @@ class CartPage(BasePage):
     def __init__(self,page:Page):
         super().__init__(page)
 
-        place_order_form = PlaceOrderForm(page)
+        self.place_order_form = PlaceOrderForm(page)
+        self.nav_bar=NavBar(page)
+        self.footer=Footer(page)
+        self.thank_you_alert=ThankYouForPurchaseAlert(page)
 
         self.title_table = Text(page,'//table[@class="table table-bordered table-hover table-striped"]//thead',"Header of table")
         self.selected_product = Text(page,'//table[@class="table table-bordered table-hover table-striped"]//tr[@class="success"]',"Selected product")

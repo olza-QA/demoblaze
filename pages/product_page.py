@@ -13,8 +13,8 @@ class ProductPage(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        nav_bar=NavBar(page)
-        footer=Footer(page)
+        self.nav_bar=NavBar(page)
+        self.footer=Footer(page)
 
         self.product_title = Text(page,'//div[@id="tbodyid"]//h2','Product title')
         self.product_price = Text(page,'//div[@id="tbodyid"]//h3','Product price')

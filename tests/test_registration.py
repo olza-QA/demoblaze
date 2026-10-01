@@ -1,12 +1,9 @@
-from tkinter import dialog
-
-from playwright.sync_api import sync_playwright, Page, expect
+from playwright.sync_api import sync_playwright, Page
 import pytest
 from faker import Faker
-from components.nav_bar import NavBar
-from components.sign_up_form import SignUpForm
 import allure
 from tools.allure.tags import AllureTag
+from pages.home_page import HomePage
 
 fake = Faker()
 
@@ -18,27 +15,23 @@ fake = Faker()
 @allure.feature("Registration")
 @allure.story("Registration with valid data")
 @allure.severity("critical")
-def test_successful_registration(page:Page):
+def test_successful_registration(home_page:HomePage,page:Page):
     username = fake.name() + "2026"
     password = fake.password()
-    with allure.step(f'Opening the url "https://www.demoblaze.com"'):
-        page.goto("https://www.demoblaze.com")
-
-    nav_bar = NavBar(page)
-    sign_up_from = SignUpForm(page)
-
 
     def handle_dialog(dialog):
         print(f"Modal message: {dialog.message}")
         assert dialog.message == "Sign up successful."
         dialog.accept()
 
-    nav_bar.check_visible_elements_non_authorized_user()
-    nav_bar.click_signup_link()
-    sign_up_from.check_visible()
-    sign_up_from.fill_form(username,password)
+    home_page.visit("https://www.demoblaze.com")
+
+    home_page.nav_bar.check_visible_elements_non_authorized_user()
+    home_page.nav_bar.click_signup_link()
+    home_page.nav_bar.sign_up_form.check_visible()
+    home_page.nav_bar.sign_up_form.fill_form(username,password)
     page.on("dialog", handle_dialog)
-    sign_up_from.click_sign_up()
+    home_page.nav_bar.sign_up_form.click_sign_up()
     page.wait_for_timeout(600) #need for modal message
 
 
@@ -54,24 +47,19 @@ def test_successful_registration(page:Page):
 @allure.feature("Registration")
 @allure.story("Registration with invalid data + existed user")
 @allure.severity("critical")
-def test_registration_with_invalid_data(page:Page, username:str, password:str):
-    with allure.step(f'Opening the url "https://www.demoblaze.com"'):
-        page.goto("https://www.demoblaze.com")
-
-    nav_bar = NavBar(page)
-    sign_up_from = SignUpForm(page)
+def test_registration_with_invalid_data(home_page:HomePage,page:Page, username:str, password:str):
 
     def handle_dialog(dialog):
         print(f"Modal message: {dialog.message}")
         assert dialog.message in ("Please fill out Username and Password.","This user already exist.")
         dialog.accept()
 
-    nav_bar.click_signup_link()
-    sign_up_from.check_visible()
-    sign_up_from.fill_form(username=username, password=password)
-
+    home_page.visit("https://www.demoblaze.com")
+    home_page.nav_bar.click_signup_link()
+    home_page.nav_bar.sign_up_form.check_visible()
+    home_page.nav_bar.sign_up_form.fill_form(username=username, password=password)
     page.on("dialog", handle_dialog)
-    sign_up_from.click_sign_up()
+    home_page.nav_bar.sign_up_form.click_sign_up()
     page.wait_for_timeout(500) #need for modal message
 
 

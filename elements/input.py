@@ -5,7 +5,7 @@ import allure
 class Input(BaseElement):
     @property
     def type_of(self):
-        return 'button'
+        return 'input'
 
     def fill(self,value: str,**kwargs) :
         with allure.step(f'Fill {self.type_of} {self.name} with text "{value}"'):
