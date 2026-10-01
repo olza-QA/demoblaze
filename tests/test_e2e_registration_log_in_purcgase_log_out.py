@@ -11,7 +11,9 @@ from tools.allure.tags import AllureTag
 fake = Faker()
 @pytest.mark.flaky(reruns=1, reruns_delay=1)
 @pytest.mark.regression
-@pytest.mark.parametrize("product_name", [("Iphone 6 32gb")])
+@pytest.mark.parametrize(
+    "product_name", [("Iphone 6 32gb")]
+)
 @allure.title("E2E: Registration, Log in, Purchase product, Log out")
 @allure.tag(AllureTag.REGISTRATION,AllureTag.USER_LOGIN,AllureTag.NAVIGATION,AllureTag.PURCHASE)
 @allure.epic("Demoblaze")
