@@ -34,7 +34,7 @@ def test_successful_registration(home_page:HomePage,page:Page):
     home_page.nav_bar.sign_up_form.click_sign_up()
     page.wait_for_timeout(600) #need for modal message
 
-
+@pytest.mark.regression
 @pytest.mark.negative_tc
 @pytest.mark.parametrize("username,password", [
     ("username115", "password115"),

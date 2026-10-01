@@ -1,6 +1,5 @@
 from playwright.sync_api import Page
 import allure
-
 from components.base_component import BaseComponent
 from elements.button import Button
 from elements.icon import Icon
@@ -10,7 +9,6 @@ from elements.text import Text
 class LogInForm(BaseComponent):
     def __init__(self,page:Page):
         super().__init__(page)
-
 
         self.title = Text(page,"#logInModalLabel",'Log in title form')
         self.username_input = Input(page,"#loginusername",'Username')

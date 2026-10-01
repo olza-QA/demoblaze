@@ -1,6 +1,5 @@
 from playwright.sync_api import Page
 import allure
-
 from components.base_component import BaseComponent
 from elements.button import Button
 from elements.icon import Icon

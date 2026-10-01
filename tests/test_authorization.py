@@ -8,7 +8,6 @@ import allure
 
 @pytest.mark.regression
 @pytest.mark.smoke
-
 @pytest.mark.parametrize("username,password", [
     ("username115", "password115")
 ])
@@ -42,7 +41,7 @@ def test_log_out(home_page_with_state:HomePage):
     home_page_with_state.nav_bar.click_logout_link()
     home_page_with_state.nav_bar.check_visible_elements_non_authorized_user()
 
-
+@pytest.mark.regression
 @pytest.mark.negative_tc
 @pytest.mark.parametrize("username,password", [
     ("username115", "wrong_password115"),

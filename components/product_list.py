@@ -1,4 +1,3 @@
-
 from components.base_component import BaseComponent
 from elements.link import Link
 from elements.image import Image

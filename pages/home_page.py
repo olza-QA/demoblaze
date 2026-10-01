@@ -1,7 +1,6 @@
 from playwright.sync_api import Page
 from components.nav_bar import NavBar
 from components.footer import Footer
-from components.product_list import Product
 from pages.base_page import BasePage
 from elements.link import Link
 from elements.button import Button
@@ -14,13 +13,10 @@ class HomePage(BasePage):
         self.nav_bar = NavBar(page)
         self.footer = Footer(page)
 
-
-
         self.categories_header_link = Link(page,'//div[@class="list-group"]//a[@id="cat"]',"Category header")
         self.phones_category_link = Link(page,'//div[@class="list-group"]//a[text()="Phones"]',"Phones category")
         self.laptops_category_link = Link(page,'//div[@class="list-group"]//a[text()="Laptops"]',"Laptops category")
         self.monitors_category_link = Link(page,'//div[@class="list-group"]//a[text()="Monitors"]',"Monitors category")
-
 
         self.previous_page_button = Button(page,'//li//button[@id="prev2"]',"Prev")
         self.next_page_button = Button(page,'//li//button[@id="next2"]',"Next")

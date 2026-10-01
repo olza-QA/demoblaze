@@ -1,6 +1,5 @@
 from playwright.sync_api import Page
 import allure
-
 from components.about_us import AboutUs
 from components.base_component import BaseComponent
 from components.contact_form import ContactForm
@@ -8,8 +7,6 @@ from components.log_in_form import LogInForm
 from components.sign_up_form import SignUpForm
 from elements.text import Text
 from elements.link import Link
-
-
 
 class NavBar(BaseComponent):
     def __init__(self, page: Page):

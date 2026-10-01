@@ -1,5 +1,4 @@
-from playwright.sync_api import Page, expect
-
+from playwright.sync_api import Page
 from components.footer import Footer
 from components.nav_bar import NavBar
 from components.base_component import BaseComponent
