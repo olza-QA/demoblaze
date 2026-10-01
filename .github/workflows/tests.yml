@@ -36,7 +36,7 @@ jobs:
 
       - name: Run tests and generate allure results
         run: |
-          pytest -m regression --alluredir=allure-results --numprocesses 2
+          pytest -m regression --alluredir=allure-results 
 
 
       - name: Get Allure history
