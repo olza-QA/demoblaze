@@ -23,3 +23,4 @@ def test_view_about_us(home_page:HomePage,page:Page):
     home_page.nav_bar.about_us.click_close_icon()
 
 
+

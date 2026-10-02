@@ -28,3 +28,4 @@ def test_contact(home_page:HomePage,page:Page):
     page.wait_for_timeout(500) #need for modal message
 
 
+

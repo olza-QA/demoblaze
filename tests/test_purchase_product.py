@@ -19,9 +19,7 @@ from tools.allure.tags import AllureTag
 @allure.feature("Purchase products")
 @allure.story("Select products, delete product, place order")
 @allure.severity("blocker")
-def test_purchase_product(home_page:HomePage,page:Page,product_name1,product_name2,product_name3):
-    product_page = ProductPage(page)
-    cart_page = CartPage(page)
+def test_purchase_product(home_page:HomePage,cart_page:CartPage,product_page:ProductPage,page:Page,product_name1,product_name2,product_name3):
 
     def handle_dialog(dialog):
         print(f"Modal message: {dialog.message}")

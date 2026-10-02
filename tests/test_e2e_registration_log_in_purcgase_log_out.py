@@ -20,11 +20,10 @@ fake = Faker()
 @allure.feature("Registration, Log in, Purchase product, Log out")
 @allure.story("E2E scenario")
 @allure.severity("blocker")
-def test_e2e_scenario(home_page:HomePage,page: Page, product_name: str):
+def test_e2e_scenario(home_page:HomePage,cart_page:CartPage,product_page:ProductPage,page: Page, product_name: str):
     username = fake.name() + "new"
     password = fake.password()
-    product_page = ProductPage(page)
-    cart_page = CartPage(page)
+
     def handle_dialog(dialog):
         print(f"Modal message: {dialog.message}")
         dialog.accept()
@@ -54,6 +53,7 @@ def test_e2e_scenario(home_page:HomePage,page: Page, product_name: str):
     product_page.click_add_to_cart_button()
     page.wait_for_timeout(500) #need for modal message
     product_page.nav_bar.click_cart_link()
+    page.wait_for_timeout(1300) #need more time for new view
 
     cart_page.check_visible_selected_product(0)
     cart_page.click_place_order_button()
@@ -64,5 +64,6 @@ def test_e2e_scenario(home_page:HomePage,page: Page, product_name: str):
     cart_page.thank_you_alert.check_visible()
     cart_page.thank_you_alert.click_ok_button()
     cart_page.nav_bar.click_logout_link()
+    home_page.footer.check_visible_element()
 
 
