@@ -11,6 +11,7 @@ The project’s architecture was built using the Page Object Model and Page Fact
 
 The goal of this project is to automate the testing of the Demoblaze. The automated tests verify various
 functionalities of the online store web application
+
 Both positive (valid input, expected messages) and negative (invalid input, modal pop-up) scenarios are covered for:
 
 End-to-end (E2E) user scenario
