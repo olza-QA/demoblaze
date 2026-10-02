@@ -9,7 +9,7 @@ import allure
 
 @pytest.fixture
 def page(request: SubRequest, playwright:Playwright)-> Page:
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context(record_video_dir='./videos')
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
@@ -22,7 +22,7 @@ def page(request: SubRequest, playwright:Playwright)-> Page:
 
 @pytest.fixture
 def initialize_browser_state(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context(record_video_dir='./videos')
     page = context.new_page()
 
@@ -40,7 +40,7 @@ def initialize_browser_state(playwright:Playwright):
 
 @pytest.fixture
 def page_with_state(request: SubRequest,playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context(storage_state="browser-state.json",record_video_dir='./videos')
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
 
